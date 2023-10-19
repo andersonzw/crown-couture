@@ -4,11 +4,9 @@
 
 
 .directory-container {
-    padding: 3rem;
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 0.7rem;
   }
   
   .category-container {
@@ -19,7 +17,6 @@
     align-items: center;
     justify-content: center;
     border: 1px solid black;
-    margin: 0 7.5px 15px;
     overflow: hidden;
   
     &:hover {

@@ -31,7 +31,7 @@ const Directory = () => {
     },
   ];
   return (
-    <div className="directory-container">
+    <div className="innerWidth paddings directory-container">
       {categories.map((category) => {
         return <CategoryItem category={category} key={category.id} />;
       })}
