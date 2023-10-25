@@ -3,7 +3,7 @@ import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../util/firebase/firebase.utils";
-import FormInput from "./form-input/FormInput";
+import FormInput from "../form-input/FormInput";
 import "./SignUpForm.scss"
 import Button from "../button/Button";
 
@@ -52,7 +52,7 @@ const SignUpForm = () => {
     <div className="sign-up-container">
       <h2>Don't have an account?</h2>
       <span>Sign up with your email and passwod</span>
-      <form onSubmit={() => console.log("object")} action="">
+      <form onSubmit={handleSubmit}>
         <FormInput
           label={"Display Name"}
           type={"text"}
@@ -83,7 +83,7 @@ const SignUpForm = () => {
           value={confirmPassword}
         />
 
-        <Button type="submit" onClick={handleSubmit} buttonType={'google'}>
+        <Button type="submit">
           Sign Up
         </Button>
       </form>
