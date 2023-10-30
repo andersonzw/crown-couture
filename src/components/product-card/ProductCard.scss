@@ -33,11 +33,11 @@
     }
   
     .footer {
+      color: var(--grey);
       width: 100%;
       height: 5%;
       display: flex;
       justify-content: space-between;
-      font-size: 1rem;
   
       .name {
         width: 90%;
@@ -50,3 +50,11 @@
     }
   }
   
+
+
+@media (max-width:480px){
+.footer{
+  font-size: 0.8rem;
+  padding: 0 10px;
+}
+}

@@ -18,11 +18,6 @@ const Navigation = () => {
     await signOutUser();
   };
 
-  const cartClickHandler = () => {
-    setCartToggle(!cartToggle);
-    console.log("object");
-  };
-
   const closeCart = () => {
     setCartToggle(false);
   };
@@ -55,7 +50,7 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
-          <CartIcon cartClickHandler={cartClickHandler} />
+          <CartIcon />
           {cartToggle && <CartDropDown />}
         </div>
       </div>
