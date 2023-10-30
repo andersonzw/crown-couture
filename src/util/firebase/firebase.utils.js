@@ -8,7 +8,9 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -50,11 +52,10 @@ export const createUserDocumentFromAuth = async (
 ) => {
   if (!userAuth) return;
   const userDocRef = doc(db, "users", userAuth.uid);
-  console.log(userDocRef);
 
   const userSnapshot = await getDoc(userDocRef);
-  console.log(userSnapshot);
 
+  // create a new instance for this user if new user
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createdAt = new Date(); //when signed in
@@ -83,3 +84,11 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
   return await signInWithEmailAndPassword(auth, email, password);
 };
+
+export const signOutUser = async () => await signOut(auth);
+
+// observer listener
+// runs everytime auth changes, sign in or sign out
+// always listening to changes therefore need to tell it to stop listenting whenever the attached component unmounts
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);

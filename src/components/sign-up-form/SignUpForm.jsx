@@ -1,10 +1,10 @@
-import { useState } from "react";
+import {useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../util/firebase/firebase.utils";
 import FormInput from "../form-input/FormInput";
-import "./SignUpForm.scss"
+import "./SignUpForm.scss";
 import Button from "../button/Button";
 
 const defaultformFields = {
@@ -37,6 +37,7 @@ const SignUpForm = () => {
           email,
           password
         );
+
         await createUserDocumentFromAuth(user, {
           displayName,
         });
@@ -83,9 +84,7 @@ const SignUpForm = () => {
           value={confirmPassword}
         />
 
-        <Button type="submit">
-          Sign Up
-        </Button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   );

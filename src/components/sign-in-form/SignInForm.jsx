@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  createUserDocumentFromAuth,
   signInWithGooglePopup,
   signInAuthUserWithEmailAndPassword,
 } from "../../util/firebase/firebase.utils";
@@ -28,11 +29,13 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(email, password);
+       await signInAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
       resetFormFields();
-      console.log(response);
     } catch (error) {
-     alert(error.code);
+      alert(error);
     }
   };
 
@@ -65,7 +68,11 @@ const SignInForm = () => {
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
           {/* by default buttons have type of submit, need to override this */}
-          <Button type ="button" onClick={signInWithGoogle} buttonType={"google"}>
+          <Button
+            type="button"
+            onClick={signInWithGoogle}
+            buttonType={"google"}
+          >
             Google Sign In
           </Button>
         </div>
