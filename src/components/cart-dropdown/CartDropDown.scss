@@ -10,6 +10,7 @@
     top: 80px;
     right: 0px;
     z-index: 5;
+    font-size: 14px;
   
     .empty-message {
       font-size: 18px;
@@ -20,11 +21,14 @@
       height: 240px;
       display: flex;
       flex-direction: column;
-      overflow: scroll;
+      overflow: auto;
     }
   
     button {
       margin-top: auto;
+    }
+    a {
+      margin: 0.6rem auto auto auto;
     }
   }
   

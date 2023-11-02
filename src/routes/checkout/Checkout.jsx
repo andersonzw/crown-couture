@@ -1,9 +1,24 @@
-import React from 'react'
-
+import React, { useContext } from "react";
+import { CartContext } from "../../contexts/cart.context";
+import "./Checkout.scss";
+import CheckOutItem from "../../components/checkout-item/CheckOutItem";
+import Button from "../../components/button/Button";
 const Checkout = () => {
-  return (
-    <div>checkoCheckoutut</div>
-  )
-}
+  const { cartItems, totalPrice, itemCount } = useContext(CartContext);
 
-export default Checkout
+  return (
+    <div className="paddings innerWidth flexColCenter checkout-container">
+     { !itemCount && <p>Your cart is empty</p>}
+      {cartItems.map((item) => (
+        <CheckOutItem key={item.id} item={item} />
+      ))}
+
+      <div className="price-container flexCenter">
+        <span>Total: ${totalPrice}</span>
+        <Button>pay now</Button>
+      </div>
+    </div>
+  );
+};
+
+export default Checkout;
