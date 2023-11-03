@@ -1,29 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-const addCartItem = (cartItems, productToAdd) => {
-  // find if cartItems contains produdtToAdd
-
-  const existingCartItem = cartItems.find(
-    (cartItem) => cartItem.id === productToAdd.id
-  );
-  console.log(existingCartItem);
-
-  // if found, increment quantity
-
-  if (existingCartItem) {
-    return cartItems.map((cartItem) =>
-      cartItem.id === productToAdd.id
-        ? {
-            ...cartItem,
-            quantity: cartItem.quantity + 1,
-          }
-        : cartItem
-    );
-  }
-  // return new array with modified cartitems/new car item
-  return [...cartItems, { ...productToAdd, quantity: 1 }];
-};
-
 // CONTEXT
 export const CartContext = React.createContext({
   cartToggle: false,
@@ -41,33 +17,50 @@ export const CartProvider = ({ children }) => {
   const [itemCount, setItemCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  // Increase item quantity handler
   const addItemToCart = (productToAdd) => {
-    setCartItems(addCartItem(cartItems, productToAdd));
+    const existingCartItem = cartItems.find(
+      (cartItem) => cartItem.id === productToAdd.id
+    );
+    if (existingCartItem) {
+      return setCartItems(cartItems.map((cartItem) =>
+        cartItem.id === productToAdd.id
+          ? {
+              ...cartItem,
+              quantity: cartItem.quantity + 1,
+            }
+          : cartItem
+      ));
+    }
+    // return new array with modified cartitems/new car item
+    return setCartItems([...cartItems, { ...productToAdd, quantity: 1 }]);
   };
 
-  const changeQuantity = (selectedItem, action) => {
-    console.log(action);
-    const value = action === "-" ? -1 : 1;
+  // Decrease item quantity handler
+  const decrementItemQuantity = (cartItemToReduce) => {
+    if (cartItemToReduce.quantity <= 1) {
+      return setCartItems(
+        cartItems.filter((cartItem) => !(cartItem.id === cartItemToReduce.id))
+      );
+    } else {
+      return setCartItems(
+        cartItems.map((cartItem) => {
+          if (cartItem.id === cartItemToReduce.id) {
+            return { ...cartItem, quantity: cartItem.quantity - 1 };
+          } else {
+            return cartItem;
+          }
+        })
+      );
+    }
+  };
+
+  // Delete item handler
+  const removeItem = (cartItemToRemove) => {
     setCartItems(
-      cartItems.map((cartItem) => {
-        if (cartItem.id === selectedItem.id) {
-          return { ...cartItem, quantity: cartItem.quantity + value };
-        } else {
-          return cartItem;
-        }
-      })
+      cartItems.filter((cartItem) => !(cartItem.id === cartItemToRemove.id))
     );
   };
-
-  const removeItem = (selectedItem) => {
-    setCartItems(
-      cartItems.filter((cartItem) => !(cartItem.id === selectedItem.id))
-    );
-  };
-
-  useEffect(() => {
-    setCartItems(cartItems.filter((item) => !(item.quantity < 1)));
-  }, [itemCount]);
 
   useEffect(() => {
     // Cart item counter, recalculates everytime cartItems array is updated
@@ -78,7 +71,6 @@ export const CartProvider = ({ children }) => {
       )
     );
     // Total price calculator
-
     setTotalPrice(
       cartItems.reduce(
         (total, currentObject) =>
@@ -93,12 +85,12 @@ export const CartProvider = ({ children }) => {
     cartToggle,
     setCartToggle,
     addItemToCart,
-    changeQuantity,
     removeItem,
     cartItems,
     itemCount,
     totalPrice,
     setTotalPrice,
+    decrementItemQuantity,
   };
   return <CartContext.Provider value={state}>{children}</CartContext.Provider>;
 };

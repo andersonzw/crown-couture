@@ -11,9 +11,13 @@ gap: 1rem;
     margin: auto;
     gap: 1rem;
     justify-content: center;
+    
 }
 
-
+.label {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
 .product-row > * {
     margin: auto;
 }
@@ -26,7 +30,11 @@ gap: 1rem;
     justify-self: end;
     padding-right: 2rem;
 }
-
+.product-row.label>:last-child{
+    margin: auto 0;
+    justify-self: end;
+    padding-right: 1rem;
+}
 
 .image-container {
     width: 200px;

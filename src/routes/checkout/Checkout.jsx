@@ -8,7 +8,14 @@ const Checkout = () => {
 
   return (
     <div className="paddings innerWidth flexColCenter checkout-container">
-     { !itemCount && <p>Your cart is empty</p>}
+      {!itemCount && <p>Your cart is empty</p>}
+      <div className="product-row label">
+        <span>Product</span>
+        <span>Description</span>
+        <span>Quantity</span>
+        <span>Price</span>
+        <span>Remove</span>
+      </div>
       {cartItems.map((item) => (
         <CheckOutItem key={item.id} item={item} />
       ))}
