@@ -17,6 +17,12 @@ import {
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
+// uploading json file into database
+import { collection, writeBatch } from "firebase/firestore";
+
+// retrieving from firebase
+import { query, getDocs } from "firebase/firestore";
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBwW2U91NC9gsMvz-wXeEQ7QodMeI6OOPU",
@@ -92,3 +98,37 @@ export const signOutUser = async () => await signOut(auth);
 // always listening to changes therefore need to tell it to stop listenting whenever the attached component unmounts
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
+
+// Uploading to firebase
+///--------------------------------------------------------------------////
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
+
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
+
+  await batch.commit();
+  console.log("done");
+};
+
+// Retrieving from firebase
+///--------------------------------------------------------------------////
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, "categories");
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {});
+
+  return categoryMap;
+};
