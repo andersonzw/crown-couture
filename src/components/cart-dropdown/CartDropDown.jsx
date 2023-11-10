@@ -15,7 +15,7 @@ const CartDropDown = () => {
         ))}
       </div>
       <Link to="/checkout">
-        <Button onClick={() => setCartToggle((prev) => !prev)}>
+        <Button onClick={() => setCartToggle(false)}>
           GO TO CHECKOUT
         </Button>
       </Link>

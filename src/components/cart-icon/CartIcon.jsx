@@ -7,7 +7,6 @@ const CartIcon = () => {
 
   const cartClickHandler = () => {
     setCartToggle(!cartToggle);
-    console.log("object");
   };
 
   return (
