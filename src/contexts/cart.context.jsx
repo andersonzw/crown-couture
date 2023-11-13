@@ -1,4 +1,5 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
+import { createAction } from "../util/reducer/reducer.utils";
 
 const INITIAL_STATE = {
   itemCount: 0,
@@ -7,9 +8,9 @@ const INITIAL_STATE = {
   totalPrice: 0,
 };
 const CART_ACTION_TYPES = {
-  SET_CART_ITEMS:"SET_CART_ITEMS",
-  SET_IS_CART_OPEN:"SET_IS_CART_OPEN"
-}
+  SET_CART_ITEMS: "SET_CART_ITEMS",
+  SET_IS_CART_OPEN: "SET_IS_CART_OPEN",
+};
 // REDUCER
 const cartReducer = (state, action) => {
   const { type, payload } = action;
@@ -26,7 +27,7 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cartToggle: payload,
-      }
+      };
   }
 };
 
@@ -56,14 +57,13 @@ export const CartProvider = ({ children }) => {
       0
     );
 
-    dispatch({
-      type: CART_ACTION_TYPES.SET_CART_ITEMS,
-      payload: {
+    dispatch(
+      createAction(CART_ACTION_TYPES.SET_CART_ITEMS, {
         cartItems: newCartItems,
         totalPrice: newCartTotal,
         itemCount: newCartCount,
-      },
-    });
+      })
+    );
   };
   // Increase item quantity handler
   const addItemToCart = (productToAdd) => {
@@ -117,8 +117,8 @@ export const CartProvider = ({ children }) => {
   };
 
   const setCartToggle = (bool) => {
-    dispatch({type: CART_ACTION_TYPES.SET_IS_CART_OPEN, payload:bool})
-  }
+    dispatch(createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, bool));
+  };
 
   // States that you want to provide
   const value = {

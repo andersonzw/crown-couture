@@ -31,7 +31,13 @@ const SignUpForm = () => {
     e.preventDefault();
     if (password !== confirmPassword) {
       return alert("password do not match");
-    } else {
+    } 
+    else if (password.length <= 5){
+      return alert("password too short (min length = 5)")
+    }
+    
+    
+    else {
       try {
         const { user } = await createAuthUserWithEmailAndPassword(
           email,
