@@ -6,21 +6,23 @@ import { ReactComponent as CrwnLogo } from "../../assets/007 crown.svg";
 import { signOutUser } from "../../util/firebase/firebase.utils";
 import CartIcon from "../../components/cart-icon/CartIcon";
 import CartDropDown from "../../components/cart-dropdown/CartDropDown";
-import { CartContext } from "../../contexts/cart.context";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../store/user/user.selector";
+import { selectIsCartOpen } from "../../store/cart/cart.selector";
+import { useDispatch } from "react-redux";
+import { setCartToggle } from "../../store/cart/cart.action";
 const Navigation = () => {
   // select the userreducer state from store
+  const dispatch = useDispatch()
   const currentUser = useSelector(selectCurrentUser)
-  const { cartToggle, setCartToggle } = useContext(CartContext);
-
+  const cartToggle = useSelector(selectIsCartOpen)
   const signOutHandler = async () => {
     closeCart()
     await signOutUser();
   };
 
   const closeCart = () => {
-    setCartToggle(false);
+    dispatch(setCartToggle(false));
   };
   return (
     <>

@@ -1,10 +1,14 @@
-import React, { useContext } from "react";
-import { CartContext } from "../../contexts/cart.context";
+
 import "./Checkout.scss";
 import CheckOutItem from "../../components/checkout-item/CheckOutItem";
 import Button from "../../components/button/Button";
+import { useSelector } from "react-redux";
+import { selectCartCount, selectCartItems, selectCartTotal } from "../../store/cart/cart.selector";
 const Checkout = () => {
-  const { cartItems, totalPrice, itemCount } = useContext(CartContext);
+
+  const cartItems = useSelector(selectCartItems)
+  const totalPrice = useSelector(selectCartTotal)
+  const itemCount = useSelector(selectCartCount)
 
   return (
     <div className="paddings innerWidth flexColCenter checkout-container">

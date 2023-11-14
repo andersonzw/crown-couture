@@ -1,11 +1,16 @@
-import React, { useContext } from "react";
 import Button from "../button/Button";
 import "./CartDropDown.scss";
 import CartItem from "../cart-item/CartItem";
-import { CartContext } from "../../contexts/cart.context";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCartCount, selectCartItems } from "../../store/cart/cart.selector";
+import { setCartToggle } from "../../store/cart/cart.action";
 const CartDropDown = () => {
-  const { cartItems, setCartToggle, itemCount } = useContext(CartContext);
+
+  const cartItems = useSelector(selectCartItems)
+  const itemCount = useSelector(selectCartCount)
+  const dispatch = useDispatch()
+
   return (
     <div className="cart-dropdown-container">
       { !itemCount && <p>Your cart is empty</p>}
@@ -15,7 +20,7 @@ const CartDropDown = () => {
         ))}
       </div>
       <Link to="/checkout">
-        <Button onClick={() => setCartToggle(false)}>
+        <Button onClick={() => dispatch(setCartToggle(false))}>
           GO TO CHECKOUT
         </Button>
       </Link>
