@@ -12,7 +12,6 @@ const dispatch = useDispatch()
     // addCollectionAndDocuments('categories', SHOP_DATA)
     const getCategoriesMap = async () => {
       const categoriesArray = await getCategoriesAndDocuments();
-      console.log(categoriesArray);
       dispatch(setCategories(categoriesArray));
     };
     getCategoriesMap();
