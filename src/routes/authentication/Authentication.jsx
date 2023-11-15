@@ -7,7 +7,7 @@ const Authentication = () => {
 // google popup
 
   return (
-    <div className=" a-container paddings innerWidth flexCenter">
+    <div className=" a-container paddings innerWidth flexCenter mobile-padding-container">
       <SignInForm />
       <SignUpForm />
     </div>

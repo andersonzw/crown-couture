@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ProductCard from "../../components/product-card/ProductCard";
 import { useSelector } from "react-redux";
 import { selectCategoriesMap } from "../../store/categories/category.selector";
+import "./Category.scss"
 const Category = () => {
   const { category } = useParams();
 
@@ -16,7 +17,7 @@ const Category = () => {
   }, [category, categoriesMap]);
 
   return (
-    <div className="wrapper paddings innerWidth">
+    <div className="shop-wrapper paddings innerWidth mobile-padding-container">
       <h2 className="title">{category}</h2>
       <div className="shop-container innerWidth ">
         {products &&

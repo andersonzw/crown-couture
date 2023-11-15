@@ -83,6 +83,10 @@ a:hover {
   object-fit: cover;
 }
 
+.title {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
 /* media queries */
 @media (min-width: 1536px) {
   .innerWidth {
@@ -94,5 +98,14 @@ a:hover {
 @media (min-width: 1280px), (min-width: 768px) {
   .paddings {
     padding: 2rem;
+  }
+}
+
+@media (max-width:480px){
+  .mobile-padding-container {
+      margin-top: 4rem;
+  }
+  .title {
+    font-size: 1rem;
   }
 }

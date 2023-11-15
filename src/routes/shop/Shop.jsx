@@ -2,9 +2,10 @@ import { getCategoriesAndDocuments } from "../../util/firebase/firebase.utils";
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import CategoriesPreview from "../categories-preview/CategoriePreview";
+
 import Category from "../category/Category";
 import { setCategories } from "../../store/categories/category.action";
+import CategoryAll from "../category-all/CategoryAll";
 const Shop = () => {
 const dispatch = useDispatch()
   useEffect(() => {
@@ -20,7 +21,7 @@ const dispatch = useDispatch()
   return (
     <Routes>
       {/* default page */}
-      <Route index element={<CategoriesPreview />} />
+      <Route index element={<CategoryAll />} />
       <Route path=":category" element={<Category />} />
     </Routes>
   );

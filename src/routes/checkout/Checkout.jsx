@@ -11,13 +11,13 @@ const Checkout = () => {
   const itemCount = useSelector(selectCartCount)
 
   return (
-    <div className="paddings innerWidth flexColCenter checkout-container">
+    <div className="paddings innerWidth flexColCenter checkout-container mobile-padding-container">
       {!itemCount && <p>Your cart is empty</p>}
       {!!itemCount && <div className="product-row label">
         <span>Product</span>
-        <span>Description</span>
-        <span>Quantity</span>
+        <span>Name</span>
         <span>Price</span>
+        <span>Qty</span>
         <span>Remove</span>
       </div>}
       {cartItems.map((item) => (
