@@ -5,7 +5,6 @@ import "./CategoryItem.scss"
 const CategoryItem = ({category}) => {
   const {title, imageUrl} = category
   const navigate = useNavigate()
-
   const onClickHandler = ()=> navigate(`/shop/${title}`)
   return (
     <div onClick = {onClickHandler} className="category-container">

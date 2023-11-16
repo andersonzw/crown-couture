@@ -1,0 +1,47 @@
+.divLoading {
+  height: 34px;
+  width: 52px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  transition: 0.5s;
+}
+.loadingItem1 {
+  animation: loadingRun 0.9s ease 0s infinite;
+}
+.loadingItem2 {
+  animation: loadingRun 0.9s ease 0.2s infinite;
+  margin-left: 20px;
+}
+.loadingItem3 {
+  animation: loadingRun 0.9s ease 0.4s infinite;
+  margin-left: 40px;
+}
+.loadingItem1,
+.loadingItem2,
+.loadingItem3 {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: #999998;
+  border-radius: 12px;
+  position: absolute;
+  bottom: 0;
+  left: auto;
+}
+@keyframes loadingRun {
+  0% {
+    height: 12px;
+  }
+
+  50% {
+    height: 34px;
+  }
+
+  100% {
+    height: 12px;
+  }
+}

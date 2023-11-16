@@ -7,6 +7,8 @@ import {
 import FormInput from "../form-input/FormInput";
 import "./SignInForm.scss";
 import Button from "../button/Button";
+import { useNavigate } from "react-router-dom";
+
 
 const defaultFormFields = {
   email: "",
@@ -14,6 +16,7 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
+  const navigate = useNavigate()
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -23,17 +26,20 @@ const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     await signInWithGooglePopup();
+    navigate("/shop")
+    
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
        await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
       resetFormFields();
+      navigate("/shop")
+    
     } catch (error) {
       alert(error);
     }
@@ -41,7 +47,6 @@ const SignInForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormFields({ ...formFields, [name]: value });
   };
 

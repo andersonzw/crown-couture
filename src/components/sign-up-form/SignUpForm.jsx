@@ -6,6 +6,7 @@ import {
 import FormInput from "../form-input/FormInput";
 import "./SignUpForm.scss";
 import Button from "../button/Button";
+import { useNavigate } from "react-router-dom";
 
 const defaultformFields = {
   displayName: "",
@@ -15,6 +16,7 @@ const defaultformFields = {
 };
 
 const SignUpForm = () => {
+  const navigate = useNavigate()
   const [formFields, setFormFields] = useState(defaultformFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
@@ -48,6 +50,7 @@ const SignUpForm = () => {
           displayName,
         });
         resetFormFields();
+        navigate("/shop")
       } catch (error) {
         if (error.code === "auth/email-already-in-use")
           alert("Cannot create user, email already in use");

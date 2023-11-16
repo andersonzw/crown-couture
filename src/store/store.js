@@ -9,7 +9,7 @@ import storage from "redux-persist/lib/storage";
 const persistConfig = {
   key: "root", //persist the whole thing
   storage,
-  blacklist: ["user"], //user is already persisted with authlistener
+  whitelist: ["cart"], //user is already persisted with authlistener
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -34,7 +34,7 @@ const categories = [
 
 const Directory = () => {
   return (
-    <div className="innerWidth paddings directory-container">
+    <div className="innerWidth paddings mobile-padding-container  directory-container">
       {categories.map((category) => {
         return <CategoryItem category={category} key={category.id} />;
       })}

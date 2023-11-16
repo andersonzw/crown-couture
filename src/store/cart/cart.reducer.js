@@ -22,5 +22,10 @@ const CART_INITIAL_STATE = {
           ...state,
           cartToggle: payload,
         };
+
+      case CART_ACTION_TYPES.CLEAR_CART:
+        return {
+          ...state, cartItems: []
+        }
     }
   };

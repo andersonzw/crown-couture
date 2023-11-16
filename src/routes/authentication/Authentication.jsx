@@ -4,7 +4,6 @@ import SignInForm from "../../components/sign-in-form/SignInForm";
 import "./Authentication.scss"
 const Authentication = () => {
 
-// google popup
 
   return (
     <div className=" a-container paddings innerWidth flexCenter mobile-padding-container">
