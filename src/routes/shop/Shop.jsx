@@ -4,17 +4,13 @@ import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import Category from "../category/Category";
-import { setCategories } from "../../store/categories/category.action";
+import { fetchCategoriesAsync } from "../../store/categories/category.action";
 import CategoryAll from "../category-all/CategoryAll";
 const Shop = () => {
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  
   useEffect(() => {
-    // addCollectionAndDocuments('categories', SHOP_DATA)
-    const getCategoriesMap = async () => {
-      const categoriesArray = await getCategoriesAndDocuments();
-      dispatch(setCategories(categoriesArray));
-    };
-    getCategoriesMap();
+    dispatch(fetchCategoriesAsync());
   }, []);
 
   return (
