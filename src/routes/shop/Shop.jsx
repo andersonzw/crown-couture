@@ -1,11 +1,13 @@
-import { getCategoriesAndDocuments } from "../../util/firebase/firebase.utils";
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import Category from "../category/Category";
-import { fetchCategoriesAsync } from "../../store/categories/category.action";
 import CategoryAll from "../category-all/CategoryAll";
+import { fetchCategoriesAsync } from "../../store/categories/category.reducer";
+
+
+
 const Shop = () => {
   const dispatch = useDispatch();
   

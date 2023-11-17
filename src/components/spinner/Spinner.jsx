@@ -5,10 +5,10 @@ import React from "react";
 
 const Spinner = () => {
   return (
-    <div class="divLoading">
-      <div class="loadingItem1"></div>
-      <div class="loadingItem2"></div>
-      <div class="loadingItem3"></div>
+    <div className="divLoading">
+      <div className="loadingItem1"></div>
+      <div className="loadingItem2"></div>
+      <div className="loadingItem3"></div>
     </div>
   );
 };
