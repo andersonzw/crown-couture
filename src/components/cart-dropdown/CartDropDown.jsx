@@ -4,7 +4,7 @@ import CartItem from "../cart-item/CartItem";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCartCount, selectCartItems } from "../../store/cart/cart.selector";
-import { setCartToggle } from "../../store/cart/cart.action";
+import { setCartToggle } from "../../store/cart/cart.reducer";
 const CartDropDown = () => {
 
   const cartItems = useSelector(selectCartItems)

@@ -19,7 +19,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false, //turns off serialise check middleware
-    }).concat(logger),
+    })
 });
 
 export const persistor = persistStore(store); //export into index js

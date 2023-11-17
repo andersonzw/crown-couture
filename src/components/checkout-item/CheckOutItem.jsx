@@ -1,24 +1,22 @@
 
-import { useDispatch, useSelector } from "react-redux";
-import { addItemToCart, decrementItemQuantity, removeItem } from "../../store/cart/cart.action";
-import { selectCartItems } from "../../store/cart/cart.selector";
+import { useDispatch, } from "react-redux";
+import { addItemToCart, decrementItemQuantity, removeItem } from "../../store/cart/cart.reducer";
+
 
 const CheckOutItem = ({ item }) => {
   const dispatch = useDispatch()
   const { imageUrl, name, quantity, price } = item;
 
-  const cartItems = useSelector(selectCartItems)
-
   const handleIncrement = () => {
-    dispatch(addItemToCart(cartItems, item));
+    dispatch(addItemToCart(item));
   };
 
   const handleDelete = () => {
-    dispatch(removeItem(cartItems, item))
+    dispatch(removeItem(item))
   }
 
   const handleDecrement = () => {
-    dispatch(decrementItemQuantity(cartItems, item))
+    dispatch(decrementItemQuantity( item))
   }
   return (
     <div className="product-row">

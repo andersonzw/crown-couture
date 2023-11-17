@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../store/user/user.selector";
 import { selectIsCartOpen } from "../../store/cart/cart.selector";
 import { useDispatch } from "react-redux";
-import { setCartToggle } from "../../store/cart/cart.action";
+import { setCartToggle } from "../../store/cart/cart.reducer";
 const Navigation = () => {
   // select the userreducer state from store
   const dispatch = useDispatch()

@@ -7,7 +7,7 @@ import {
   selectCartItems,
   selectCartTotal,
 } from "../../store/cart/cart.selector";
-import { clearCart } from "../../store/cart/cart.action";
+import { clearCart } from "../../store/cart/cart.reducer";
 const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
   const totalPrice = useSelector(selectCartTotal);
