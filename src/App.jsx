@@ -12,7 +12,7 @@ import {
   createUserDocumentFromAuth,
   onAuthStateChangedListener,
 } from "./util/firebase/firebase.utils";
-import { setCurrentUser } from "./store/user/user.action";
+import { setCurrentUser } from "./store/user/user.reducer";
 
 const App = () => {
   // dispatches action to root reducer, which dispatches action to every single reducer
