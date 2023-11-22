@@ -8,6 +8,7 @@ import {
   selectCartTotal,
 } from "../../store/cart/cart.selector";
 import { clearCart } from "../../store/cart/cart.reducer";
+import PaymentForm from "../../components/payment-form/PaymentForm";
 const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
   const totalPrice = useSelector(selectCartTotal);
@@ -40,6 +41,7 @@ const Checkout = () => {
           <span>Total: ${totalPrice}</span>
         </div>
       </div>
+      <PaymentForm/>
     </div>
   );
 };

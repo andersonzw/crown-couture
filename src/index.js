@@ -1,3 +1,5 @@
+
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -8,9 +10,10 @@ import { Provider } from "react-redux";
 import { persistor, store } from "./store/store";
 import ScrollToTop from "./util/SrollToTop";
 import { Elements } from "@stripe/react-stripe-js";
-import { stripePromise } from "./util/stripe/strpe.utils";
+import { stripePromise } from "./util/stripe/stripe.utils";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
