@@ -1,5 +1,5 @@
 import React from "react";
-import "./Button.scss"
+import "./Button.scss";
 /*
  default
  inverted
@@ -11,13 +11,20 @@ const BUTTON_TYPE_CLASSES = {
   inverted: "inverted",
 };
 
-const Button = ({ children, buttonType, ...otherProps }) => {
+const Button = ({ children, buttonType, isLoading, ...otherProps }) => {
   return (
     <button
       className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
       {...otherProps}
+      disabled={isLoading}
     >
-      {children}
+      {isLoading ? (
+        <div className="spinner-overlay">
+          <div className="spinner-container"></div>
+        </div>
+      ) : (
+        children
+      )}
     </button>
   );
 };

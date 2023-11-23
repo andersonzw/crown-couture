@@ -9,10 +9,13 @@ import {
 } from "../../store/cart/cart.selector";
 import { clearCart } from "../../store/cart/cart.reducer";
 import PaymentForm from "../../components/payment-form/PaymentForm";
+import {  selectPaymentFormToggle, setPaymentFormToggle } from "../../store/payment/payment.reducer";
 const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
   const totalPrice = useSelector(selectCartTotal);
   const itemCount = useSelector(selectCartCount);
+  
+  const paymentFormToggle = useSelector(selectPaymentFormToggle)
 
   const dispatch = useDispatch()
   const handleClearCart = () =>{
@@ -37,11 +40,12 @@ const Checkout = () => {
       <div className="price-container">
         <Button onClick={handleClearCart} buttonType={"inverted"}>clear cart</Button>
         <div>
-          <Button>pay now</Button>
+          <Button onClick ={()=>dispatch(setPaymentFormToggle(true))}>pay now</Button>
           <span>Total: ${totalPrice}</span>
         </div>
       </div>
-      <PaymentForm/>
+      {paymentFormToggle && <PaymentForm/>}
+      
     </div>
   );
 };

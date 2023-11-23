@@ -1,11 +1,38 @@
+.background-overlay{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(29, 29, 29, 0.7);
+    z-index: 100;
+    position: fixed;
+    top: 0; left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
 .payment-form-container {
     display: flex;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    height: 500px;
+    width: 400px;
+    padding: 2rem;
+
+    
     
 }
 .form-container {
-    min-width: 500px;
+    min-width: 100%;
 }
 
 .form-container > :nth-child(2){
     min-width: 100%
+}
+
+.x-button {
+    position: absolute;
+    top: 0.4rem;right: 1rem;
+    font-size: larger;
+    cursor: pointer;
 }
