@@ -24,6 +24,8 @@
 }
 .form-container {
     min-width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .form-container > :nth-child(2){
@@ -35,4 +37,26 @@
     top: 0.4rem;right: 1rem;
     font-size: larger;
     cursor: pointer;
+}
+
+#card-element{
+    display: flex;
+    flex-direction: column;
+}
+
+.demo-text {
+    color: rgb(51, 238, 252);
+    font-weight: 600;
+    position: absolute;
+    bottom: 100px;
+    text-align: center;
+    font-style: italic;
+}
+
+.powered-by {
+    color: white;
+    font-weight: 600;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
 }
