@@ -1,5 +1,5 @@
 # Crown-Couture
-
+![crowncouture](https://github.com/andersonzw/crown-couture/assets/84068667/4472fcc3-84da-4a7d-a38a-5c903caf4e35)
 ## Description
 This is a modern e-commerce platform built using React. It is designed to provide a seamless shopping experience for users and an easy-to-manage backend for administrators using Firebase. The platform features a responsive design, secure checkout process, and an intuitive user interface.
 
